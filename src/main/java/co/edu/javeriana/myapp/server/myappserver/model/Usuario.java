@@ -1,4 +1,4 @@
-package co.edu.javeriana.myapp.server.myappserver.model;
+/*package co.edu.javeriana.myapp.server.myappserver.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,3 +26,4 @@ public class Usuario {
     private int tipo;
 
 }
+*/
