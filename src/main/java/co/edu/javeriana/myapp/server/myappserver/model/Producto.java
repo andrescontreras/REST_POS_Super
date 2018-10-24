@@ -1,4 +1,4 @@
-/*package co.edu.javeriana.myapp.server.myappserver.model;
+package co.edu.javeriana.myapp.server.myappserver.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,10 +18,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Producto {
     private static final long serialVersionUID = 1987040876334251017L;
 
-
-    @OneToMany(mappedBy="items")
-    private List<Item> items;
-    
     @Id
     private int id;
     private int cantidad;
@@ -29,5 +25,56 @@ public class Producto {
     private String nombre;
     private int precio;
     private int undMed;
+
+    /*
+
+    @OneToMany(mappedBy="items")
+    private List<Item> items;
+    
+    public List<Item> getItems() {
+		return items;
+	}
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+	*/
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	public int getCodigoSKU() {
+		return codigoSKU;
+	}
+	public void setCodigoSKU(int codigoSKU) {
+		this.codigoSKU = codigoSKU;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public int getPrecio() {
+		return precio;
+	}
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	public int getUndMed() {
+		return undMed;
+	}
+	public void setUndMed(int undMed) {
+		this.undMed = undMed;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
-*/

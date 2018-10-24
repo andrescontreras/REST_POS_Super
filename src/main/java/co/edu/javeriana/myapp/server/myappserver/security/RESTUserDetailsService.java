@@ -16,9 +16,9 @@ public class RESTUserDetailsService implements UserDetailsService {
 
 	public RESTUserDetailsService() {
 		super();
-		users.put("user", new User("user", "password", "ROLE_USER"));
-		users.put("admin", new User("admin", "password", "ROLE_ADMIN"));
-
+		users.put("user", new User("user", "password", "USER","ROLE_USER"));
+		users.put("admin", new User("admin", "password","ADMIN" ,"ROLE_ADMIN"));
+		users.put("cajero", new User("cajero", "password", "CAJERO","ROLE_CAJERO"));
 	}
 	@Override
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
