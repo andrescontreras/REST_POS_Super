@@ -13,16 +13,18 @@ public class User implements UserDetails {
 	private static final long serialVersionUID = 1987040876334251017L;
 	private String username;
 	private String password;
+	private String tipo;
 	private boolean accountNonExpired;
 	private boolean accountNonLocked;
 	private boolean credentialsNonExpired;
 	private boolean enabled;
 	private List<GrantedAuthority> authorities = new ArrayList<>();
 
-	public  User(String username, String password, String... authorities) {
+	public  User(String username, String password,String tipo, String... authorities) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.tipo = tipo;
 		for (String auth : authorities) {
 			GrantedAuthority ga = new GrantedAuthority(){
 				private static final long serialVersionUID = -3483137563784976405L;
@@ -47,7 +49,9 @@ public class User implements UserDetails {
 	public String getPassword() {
 		return password;
 	}
-
+	public String getTipo() {
+		return tipo;
+	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
