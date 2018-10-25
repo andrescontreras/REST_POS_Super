@@ -13,7 +13,7 @@ import co.edu.javeriana.myapp.server.myappserver.model.ProductoCom;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoComRepository;
 import java.util.Optional;
 
-
+@RequestMapping("/api")
 @RestController
 public class ProductoComService
 {

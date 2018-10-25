@@ -13,7 +13,7 @@ import co.edu.javeriana.myapp.server.myappserver.model.ProductoInv;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInvRepository;
 import java.util.Optional;
 
-
+@RequestMapping("/api")
 @RestController
 public class ProductoInvService
 {

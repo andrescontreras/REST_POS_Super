@@ -12,7 +12,7 @@ import co.edu.javeriana.myapp.server.myappserver.model.Compra;
 import co.edu.javeriana.myapp.server.myappserver.model.CompraRepository;
 import java.util.Optional;
 
-
+@RequestMapping("/api")
 @RestController
 public class CompraService
 {
