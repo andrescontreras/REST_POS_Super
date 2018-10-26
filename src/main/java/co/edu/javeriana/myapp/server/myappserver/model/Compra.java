@@ -27,11 +27,11 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private Date fecha;
+    private String fecha;
 	private int total;	
 
     //Constructor 
-    public Compra(Date fecha, int total )
+    public Compra(String fecha, int total )
     {
         this.fecha = fecha;
         this.total = total;
