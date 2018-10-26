@@ -25,7 +25,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(unique=true)
     private String usuario;
@@ -48,7 +48,7 @@ public class Usuario {
 
     //Gettters and Setters
 
-    public int getId()
+    public Long getId()
     {
         return this.id;
     }

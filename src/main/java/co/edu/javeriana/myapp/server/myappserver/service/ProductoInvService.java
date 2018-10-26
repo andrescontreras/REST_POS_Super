@@ -32,7 +32,7 @@ public class ProductoInvService
         return productoInvRepository.findById(id);
     }
 
-    @RequestMapping("/producto/{codigoSKU}")
+    @RequestMapping("/producto/c/{codigoSKU}")
     Optional<ProductoInv> findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         return productoInvRepository.findByCodigoSKU(codigoSKU);
@@ -43,12 +43,12 @@ public class ProductoInvService
     {
         productoInvRepository.deleteById(id);
     }
-
-    @DeleteMapping("/producto/{codigoSKU}")
-    void deleteBySKU(@PathVariable("codigoSKU") String codigoSKU)
+    /*
+    @DeleteMapping("/producto/c/{codigoSKU}")
+    void deleteByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         productoInvRepository.deleteByCodigoSKU(codigoSKU);
-    }
+    }*/
 
     @PostMapping("/producto")
     ProductoInv crearProductoInv (ProductoInv producto)

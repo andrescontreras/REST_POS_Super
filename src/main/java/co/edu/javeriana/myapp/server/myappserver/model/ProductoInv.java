@@ -20,7 +20,7 @@ public class ProductoInv {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
 
     private int cantidad;
@@ -50,7 +50,7 @@ public class ProductoInv {
 
     //Getters and Setters
 
-    public int getId()
+    public Long getId()
     {
         return this.id;
     }

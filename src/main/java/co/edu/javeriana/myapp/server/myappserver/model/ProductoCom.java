@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -28,12 +29,16 @@ public class ProductoCom {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
     private int cantidad;
 
     @Column(unique=true)
     private String codigoSKU;
+
+    @ManyToOne
+    @JoinColumn(name="compra_id")
+    private Compra compra;
 
     private String nombre;
     private int precio;
@@ -45,7 +50,7 @@ public class ProductoCom {
 
     public ProductoCom ( int cantidad, String codigoSKU, String nombre, 
                         int precio, int undMed, Date fechaAdquisicion,
-                         Date fechaVencimiento)
+                         Date fechaVencimiento, Compra compra)
     {
         this.cantidad = cantidad;
         this.codigoSKU = codigoSKU;
@@ -54,6 +59,7 @@ public class ProductoCom {
         this.undMed = undMed;
         this.fechaAdquisicion = fechaAdquisicion;
         this.fechaVencimiento = fechaVencimiento;
+        this.compra = compra;
     }
 
     public ProductoCom ()
@@ -63,11 +69,16 @@ public class ProductoCom {
 
       //Getters and Setters
 
-      public int getId()
+      public Long getId()
       {
           return this.id;
       }
   
+      public Compra getCompra()
+      {
+          return this.compra;
+      }
+
       public int getCantidad()
       {
           return this.cantidad;
@@ -101,6 +112,11 @@ public class ProductoCom {
       public Date getFechaVencimiento()
       {
           return this.fechaVencimiento;
+      }
+
+      public void setCompra (Compra compra)
+      {
+          this.compra = compra;
       }
 
       public void setCantidad (int cantidad)

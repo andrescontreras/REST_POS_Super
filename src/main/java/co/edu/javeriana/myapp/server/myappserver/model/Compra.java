@@ -6,14 +6,18 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,16 +29,25 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name="cliente_id")
+    private Cliente cliente;
+
+    @OneToMany (mappedBy="compra")
+    private List<ProductoCom> comprados;
 
     private Date fecha;
 	private int total;	
 
     //Constructor 
-    public Compra(Date fecha, int total )
+    public Compra(Date fecha, int total, Cliente cliente )
     {
         this.fecha = fecha;
         this.total = total;
+        this.cliente = cliente;
+        comprados = new ArrayList<ProductoCom>();
     }
 
     public Compra ()
@@ -42,10 +55,22 @@ public class Compra {
 
     }
 
+    //Add
+
+    public void addCompra(ProductoCom p)
+    {
+        this.comprados.add(p);
+    }
+
     //Getters and Setters
-    public int getId()
+    public Long getId()
     {
         return this.id;
+    }
+
+    public List<ProductoCom> getComprados()
+    {
+        return this.comprados;
     }
 
     public Date getFecha()
@@ -58,6 +83,10 @@ public class Compra {
         return this.total;
     }
 
+    public Cliente getCliente()
+    {
+        return this.cliente;
+    }
     public void setFecha(Date fecha)
     {
         this.fecha = fecha;
@@ -66,5 +95,15 @@ public class Compra {
     public void setTotal (int total)
     {
         this.total = total;
+    }
+
+    public void setCliente (Cliente cliente)
+    {
+        this.cliente = cliente;
+    }
+
+    public void setComprados( List<ProductoCom> c)
+    {
+        this.comprados = c;
     }
 }
