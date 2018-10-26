@@ -21,16 +21,13 @@ public class ProductoInv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
-    private int cantidad;
-
     @Column(unique=true)
     private String codigoSKU;
     private String nombre;
     private int precio;
     private int undMed;
-
+    private int cantidad;
+    
 
     //Constructor
 
