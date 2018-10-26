@@ -20,7 +20,8 @@ public class ProductoInv {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+
+    private Long id;
     @Column(unique=true)
     private String codigoSKU;
     private String nombre;
@@ -47,7 +48,7 @@ public class ProductoInv {
 
     //Getters and Setters
 
-    public int getId()
+    public Long getId()
     {
         return this.id;
     }

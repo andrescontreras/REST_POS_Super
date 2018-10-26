@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -25,11 +26,16 @@ public class Cliente {
     private static final long serialVersionUID = 1987040876334251017L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
-    @Column(unique=true)
+
+    @OneToMany(mappedBy="cliente")
+    private List<Compra> compras; 
+
+    @Column(name = "identificacion", unique=true, nullable = false)
     private int identificacion;
     
+    @Column(name = "nombre")
 	private String nombre;	
 
 
@@ -39,6 +45,7 @@ public class Cliente {
     {
         this.identificacion = identificacion;
         this.nombre = nombre;
+        compras = new ArrayList<Compra>();
     }
 
     public Cliente ()
@@ -46,9 +53,15 @@ public class Cliente {
 
     }
 
+    //Add
+
+    public void addCompra(Compra compra)
+    {
+        this.compras.add(compra);
+    }
     //Getters and Setters
 
-    public int getId()
+    public Long getId()
     {
         return this.id;
     }
@@ -63,6 +76,11 @@ public class Cliente {
         return this.nombre;
     }
 
+    public List<Compra> getCompras()
+    {
+        return this.compras;
+    }
+
     public void setIdentificacion(int identificacion)
     {
         this.identificacion = identificacion;
@@ -71,5 +89,10 @@ public class Cliente {
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
+    }
+
+    public void setCompras(List<Compra> compras)
+    {
+        this.compras = compras;
     }
 }

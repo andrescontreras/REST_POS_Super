@@ -31,10 +31,16 @@ public class ClienteService
         return clienteRepository.findById(id);
     }
 
-    @RequestMapping("/cliente/{identificacion}")
-    Optional<Cliente> findByCodigoSKU(@PathVariable("identificacion") int identificacion)
+    @RequestMapping("/cliente/i/{identificacion}")
+    Optional<Cliente> findByIdentificacion(@PathVariable("identificacion") int identificacion)
     {
         return clienteRepository.findByIdentificacion(identificacion);
+    }
+
+    @RequestMapping("/cliente/n/{nombre}")
+    Optional<Cliente> findByNombre(@PathVariable("nombre") String nombre)
+    {
+        return clienteRepository.findByNombre(nombre);
     }
 
     @DeleteMapping("/cliente/{id}")
@@ -42,11 +48,17 @@ public class ClienteService
     {
         clienteRepository.deleteById(id);
     }
-
-    @DeleteMapping("/cliente/{identificacion}")
+    
+    @DeleteMapping("/cliente/i/{identificacion}")
     void deleteBySKU(@PathVariable("identificacion") int identificacion)
     {
         clienteRepository.deleteByIdentificacion(identificacion);
+    }
+
+    @DeleteMapping("/cliente/n/{nombre}")
+    void deleteByName(@PathVariable("nombre") String nombre)
+    {
+        clienteRepository.deleteByName(nombre);
     }
 
     @PostMapping("/cliente")

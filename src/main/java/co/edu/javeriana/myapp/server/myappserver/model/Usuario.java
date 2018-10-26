@@ -25,7 +25,8 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     @Column(unique=true)
     private String usuario;
     private String password;
@@ -33,7 +34,7 @@ public class Usuario {
 
     //Constructor 
 
-    public Usuario (String usuario, String password, int tipo)
+    public Usuario (String usuario, String password, String tipo)
     {
         this.usuario = usuario;
         this.password = password;
@@ -47,7 +48,7 @@ public class Usuario {
 
     //Gettters and Setters
 
-    public int getId()
+    public Long getId()
     {
         return this.id;
     }

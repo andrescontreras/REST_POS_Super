@@ -2,12 +2,31 @@ package co.edu.javeriana.myapp.server.myappserver.model;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface ClienteRepository extends CrudRepository<Cliente, Long>{
     
-    Optional<Cliente> findByIdentificacion(int identificacion);
+    @Transactional
+    @Query(value = "SELECT * FROM Cliente c WHERE c.idetificacion = :identificacion ", nativeQuery = true)
+    Optional<Cliente> findByIdentificacion(@Param("identificacion") int identificacion);
+    
+    @Transactional
+    @Query(value="SELECT * FROM Cliente c WHERE c.nombre = :nombre ", nativeQuery = true)
+    Optional<Cliente> findByNombre(@Param("nombre") String nombre);
 
-    void deleteByIdentificacion (int identificacion);
+    
+    @Modifying
+    @Transactional
+    @Query(value="DELETE FROM Cliente c WHERE c.identificacion = :identificacion", nativeQuery = true)
+    void deleteByIdentificacion (@Param("identificacion") int identificacion);
 
+    @Modifying
+    @Transactional
+    @Query(value="DELETE FROM Cliente WHERE Cliente.nombre = :nombre", nativeQuery = true)
+    void deleteByName (@Param("nombre") String nombre);
+    
 }
