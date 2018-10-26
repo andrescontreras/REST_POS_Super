@@ -34,20 +34,20 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
-
+    private String fecha;
+	private int total;
     @OneToMany (mappedBy="compra")
-    private List<ProductoCom> comprados;
+    private List<ProductoCom> productos;
 
-    private Date fecha;
-	private int total;	
+    	
 
     //Constructor 
-    public Compra(Date fecha, int total, Cliente cliente )
+    public Compra(String fecha, int total, Cliente cliente )
     {
         this.fecha = fecha;
         this.total = total;
         this.cliente = cliente;
-        comprados = new ArrayList<ProductoCom>();
+        productos = new ArrayList<ProductoCom>();
     }
 
     public Compra ()
@@ -59,7 +59,7 @@ public class Compra {
 
     public void addCompra(ProductoCom p)
     {
-        this.comprados.add(p);
+        this.productos.add(p);
     }
 
     //Getters and Setters
@@ -70,10 +70,10 @@ public class Compra {
 
     public List<ProductoCom> getComprados()
     {
-        return this.comprados;
+        return this.productos;
     }
 
-    public Date getFecha()
+    public String getFecha()
     {
         return this.fecha;
     }
@@ -87,7 +87,7 @@ public class Compra {
     {
         return this.cliente;
     }
-    public void setFecha(Date fecha)
+    public void setFecha(String fecha)
     {
         this.fecha = fecha;
     }
@@ -104,6 +104,6 @@ public class Compra {
 
     public void setComprados( List<ProductoCom> c)
     {
-        this.comprados = c;
+        this.productos = c;
     }
 }

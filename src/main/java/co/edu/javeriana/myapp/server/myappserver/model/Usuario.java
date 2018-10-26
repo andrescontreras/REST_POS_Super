@@ -30,11 +30,11 @@ public class Usuario {
     @Column(unique=true)
     private String usuario;
     private String password;
-    private int tipo;
+    private String tipo;
 
     //Constructor 
 
-    public Usuario (String usuario, String password, int tipo)
+    public Usuario (String usuario, String password, String tipo)
     {
         this.usuario = usuario;
         this.password = password;
@@ -63,7 +63,7 @@ public class Usuario {
         return this.password;
     }
 
-    public int getTipo()
+    public String getTipo()
     {
         return this.tipo;
     }
@@ -78,7 +78,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public void setTipo(int tipo)
+    public void setTipo(String tipo)
     {
         this.tipo = tipo;
     }
