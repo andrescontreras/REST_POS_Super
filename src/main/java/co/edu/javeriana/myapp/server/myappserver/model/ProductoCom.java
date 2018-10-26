@@ -30,20 +30,24 @@ public class ProductoCom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private int cantidad;
+
     @Column(unique=true)
     private String codigoSKU;
-    private String nombre;
-    private int precio;
-    private int undMed;
-    private int cantidad;
+
     @ManyToOne
     @JoinColumn(name="compra_id")
     private Compra compra;
 
+    private String nombre;
+    private int precio;
+    private int undMed;
+
     //Constructor 
 
     public ProductoCom ( int cantidad, String codigoSKU, String nombre, 
-                        int precio, int undMed, Compra compra)
+                        int precio, int undMed,  Compra compra)
     {
         this.cantidad = cantidad;
         this.codigoSKU = codigoSKU;
@@ -94,7 +98,7 @@ public class ProductoCom {
       {
           return this.undMed;
       }
-  
+
       public void setCompra (Compra compra)
       {
           this.compra = compra;
@@ -128,8 +132,9 @@ public class ProductoCom {
       @Override 
       public String toString()
       {
+          
         return "Producto [cantidad: " + cantidad + ", codigoSKU: " + codigoSKU + ", nombre: " + nombre + ", precio: "
-                + precio + ", undMed: " + undMed + ", fechaAdquisicion: " + " ]";
+                + precio + ", undMed: " + undMed + "]";
       }
 }
 

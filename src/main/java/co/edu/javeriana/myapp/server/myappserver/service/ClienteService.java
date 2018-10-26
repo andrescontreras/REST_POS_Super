@@ -32,13 +32,13 @@ public class ClienteService
     }
 
     @RequestMapping("/cliente/i/{identificacion}")
-    Optional<Cliente> findByIdentificacion(@PathVariable("identificacion") int identificacion)
+    Cliente findByIdentificacion(@PathVariable("identificacion") int identificacion)
     {
         return clienteRepository.findByIdentificacion(identificacion);
     }
 
     @RequestMapping("/cliente/n/{nombre}")
-    Optional<Cliente> findByNombre(@PathVariable("nombre") String nombre)
+    Cliente findByNombre(@PathVariable("nombre") String nombre)
     {
         return clienteRepository.findByNombre(nombre);
     }

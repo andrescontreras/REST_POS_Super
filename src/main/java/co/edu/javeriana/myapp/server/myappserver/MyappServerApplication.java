@@ -6,11 +6,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration;
 
+import co.edu.javeriana.myapp.server.myappserver.model.Cliente;
 import co.edu.javeriana.myapp.server.myappserver.model.ClienteRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.Compra;
 import co.edu.javeriana.myapp.server.myappserver.model.CompraRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.ProductoCom;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoComRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInv;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInvRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.Usuario;
 import co.edu.javeriana.myapp.server.myappserver.model.UsuarioRepository;
 
 @SpringBootApplication(exclude = RepositoryRestMvcAutoConfiguration.class)
@@ -19,7 +23,7 @@ public class MyappServerApplication implements CommandLineRunner {
 	@Autowired
 	private ProductoInvRepository productoInvRepository;
 
-	/*@Autowired
+	@Autowired
 	private ProductoComRepository productoComRepository;
 	
 	@Autowired
@@ -30,7 +34,7 @@ public class MyappServerApplication implements CommandLineRunner {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	*/
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MyappServerApplication.class, args);
 	}
@@ -38,7 +42,18 @@ public class MyappServerApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		productoInvRepository.deleteAll();
-		ProductoInv productoI = new ProductoInv(30,"fd33","Pera", 1500, 4);
+		productoComRepository.deleteAll();
+		compraRepository.deleteAll();
+		clienteRepository.deleteAll();
+		usuarioRepository.deleteAll();
+
+		Compra compra;
+		ProductoInv productoI;
+		ProductoCom productoC;
+		Cliente cliente;
+		Usuario usuario;
+
+		productoI = new ProductoInv(30,"fd33","Pera", 1500, 4);
 		productoInvRepository.save(productoI);
 		productoI = new ProductoInv(30,"fd34","Manzana", 1600, 4);
 		productoInvRepository.save(productoI);
@@ -50,5 +65,32 @@ public class MyappServerApplication implements CommandLineRunner {
 		productoInvRepository.save(productoI);
 		productoI = new ProductoInv(30,"fd38","Naranja", 1200, 4);
 		productoInvRepository.save(productoI);
+
+		cliente = new Cliente(4361879, "Andres");
+		clienteRepository.save(cliente);
+		compra = new Compra("17-07-2018", 1200,cliente);
+		compraRepository.save(compra);
+		compra = new Compra("19-07-2018", 2200,cliente);
+		compraRepository.save(compra);
+		compra = new Compra("25-07-2018", 5300,cliente);
+		compraRepository.save(compra);
+		
+
+		cliente = new Cliente (46189,"Pablo");
+		clienteRepository.save(cliente);
+
+		cliente = new Cliente (2345678,"Pedro");
+		clienteRepository.save(cliente);
+		compra = new Compra("20-08-2018", 1500,cliente);
+		compraRepository.save(compra);
+		
+
+		cliente = new Cliente (98765,"Lucas");
+		clienteRepository.save(cliente);
+		compra = new Compra("17-07-2018", 7200,cliente);
+		compraRepository.save(compra);
+		compra = new Compra("17-08-2018", 5200,cliente);
+		compraRepository.save(compra);
+		
 	}
 }

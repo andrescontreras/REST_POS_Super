@@ -20,3 +20,4 @@ public interface ProductoComRepository extends CrudRepository<ProductoCom, Long>
     void deleteByCodigoSKU (@Param("codigo") String codigoSKU);
 
 }
+

@@ -26,37 +26,37 @@ public class ProductoComService
         return productoComRepository.findAll();
     }
 
-    @RequestMapping("/productoInv/{id}")
+    @RequestMapping("/productoCom/{id}")
     Optional<ProductoCom> findById(@PathVariable("id") Long id)
     {
         return productoComRepository.findById(id);
     }
 
-    @RequestMapping("/productoInv/{codigoSKU}")
+    @RequestMapping("/productoCom/{codigoSKU}")
     Optional<ProductoCom> findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         return productoComRepository.findByCodigoSKU(codigoSKU);
     }
 
-    @DeleteMapping("/productoInv/{id}")
+    @DeleteMapping("/productoCom/{id}")
     void deleteById(@PathVariable("id") Long id)
     {
         productoComRepository.deleteById(id);
     }
 
-    @DeleteMapping("/productoInv/{codigoSKU}")
+    @DeleteMapping("/productoCom/{codigoSKU}")
     void deleteBySKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         productoComRepository.deleteByCodigoSKU(codigoSKU);
     }
 
-    @PostMapping("/productoInv")
+    @PostMapping("/productoCom")
     ProductoCom crearProductoCom (ProductoCom producto)
     {
         return productoComRepository.save(producto);
     }
 
-    @PutMapping("/productoInv")
+    @PutMapping("/productoCom")
     ProductoCom updateProductoCom (ProductoCom producto)
     {
         return productoComRepository.save(producto);

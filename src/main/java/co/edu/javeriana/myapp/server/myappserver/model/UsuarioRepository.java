@@ -13,12 +13,10 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
     
     
     @Transactional
-    @Query(value = "SELECT * FROM Usuario u WHERE u.usuario = :user", nativeQuery = true)
-    Optional<Usuario> findByUsuario(@Param("user") String username);
+    Optional<Usuario> findByUsuario(String usuario);
 
     @Transactional
     @Modifying
-    @Query(value = "DELETE FROM Usuario u WHERE u.usuario = :user", nativeQuery = true)
-    void deleteByUsuario (@Param("user") String username);
+    void deleteByUsuario (String usuario);
 
 }

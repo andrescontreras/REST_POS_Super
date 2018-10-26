@@ -13,12 +13,22 @@ import org.springframework.data.repository.query.Param;
 public interface ProductoInvRepository extends CrudRepository<ProductoInv, Long>{
     
     
-    @Query(value ="SELECT * FROM ProductoInv p WHERE p.codigoSKU = :codigoSKU", nativeQuery = true)
     @Transactional
-    ProductoInv findByCodigoSKU(@Param("codigoSKU") String codigoSKU);
+    ProductoInv findByCodigoSKU( String codigoSKU);
+
+    @Transactional
+    ProductoInv findByNombre(String nombre);
 
     @Modifying
     @Transactional
-    @Query(value ="DELETE FROM ProductoInv p WHERE p.codigoSKU = :codigoSKU", nativeQuery = true)
-    void deleteByCodigoSKU (@Param("codigoSKU") String codigoSKU);
+    void deleteByCodigoSKU (String codigoSKU);
+
+    @Modifying
+    @Transactional
+    void deleteByNombre (String nombre);
+
+
+    @Transactional
+    @Query(value="SELECT p FROM ProductoInv p WHERE p.precio > :v1 and p.precio < :v2", nativeQuery=true)
+    Optional<ProductoInv> FilterByPrecio(@Param("v1") int v1,@Param("v2") int v2);
 }

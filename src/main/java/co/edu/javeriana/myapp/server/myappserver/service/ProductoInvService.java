@@ -36,9 +36,16 @@ public class ProductoInvService
 
     
     @RequestMapping(value = "/producto/c/{codigoSKU}")
-    ProductoInv findByCodigoSKU(@RequestParam( value = "codigoSKU") String codigoSKU)
+    ProductoInv findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         return productoInvRepository.findByCodigoSKU(codigoSKU);
+    }
+
+    @RequestMapping(value = "/producto/n/{nombre}")
+    ProductoInv findByNombre(@PathVariable("nombre") String nombre)
+    {
+        System.out.println(nombre);
+        return productoInvRepository.findByNombre(nombre);
     }
 
     @DeleteMapping("/producto/{id}")
@@ -46,12 +53,18 @@ public class ProductoInvService
     {
         productoInvRepository.deleteById(id);
     }
-    /*
+    
     @DeleteMapping("/producto/c/{codigoSKU}")
-    void deleteByCodigoSKU(@RequestParam("codigoSKU") String codigoSKU)
+    void deleteByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         productoInvRepository.deleteByCodigoSKU(codigoSKU);
-    }*/
+    }
+
+    @DeleteMapping("/producto/n/{nombre}")
+    void deleteByNombre(@PathVariable("nombre") String nombre)
+    {
+        productoInvRepository.deleteByNombre(nombre);
+    }
 
     @PostMapping("/producto")
     ProductoInv crearProductoInv (ProductoInv producto)
@@ -63,5 +76,12 @@ public class ProductoInvService
     ProductoInv updateProductoInv (ProductoInv producto)
     {
         return productoInvRepository.save(producto);
+    }
+
+    @RequestMapping(value="/productos")
+    @ResponseBody
+    Optional<ProductoInv> FilterByPrecio(@RequestParam("v1") int v1,@RequestParam("v2") int v2)
+    {
+        return productoInvRepository.FilterByPrecio(v1, v2);
     }
 }

@@ -11,12 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ClienteRepository extends CrudRepository<Cliente, Long>{
     
     @Transactional
-    @Query(value = "SELECT * FROM Cliente c WHERE c.idetificacion = :identificacion ", nativeQuery = true)
-    Optional<Cliente> findByIdentificacion(@Param("identificacion") int identificacion);
+    Cliente findByIdentificacion(int identificacion);
     
     @Transactional
-    @Query(value="SELECT * FROM Cliente c WHERE c.nombre = :nombre ", nativeQuery = true)
-    Optional<Cliente> findByNombre(@Param("nombre") String nombre);
+    Cliente findByNombre(String nombre);
 
     
     @Modifying
