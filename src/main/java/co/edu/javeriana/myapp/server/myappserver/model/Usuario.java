@@ -63,7 +63,7 @@ public class Usuario {
         return this.password;
     }
 
-    public int getTipo()
+    public String getTipo()
     {
         return this.tipo;
     }
@@ -78,7 +78,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public void setTipo(int tipo)
+    public void setTipo(String tipo)
     {
         this.tipo = tipo;
     }

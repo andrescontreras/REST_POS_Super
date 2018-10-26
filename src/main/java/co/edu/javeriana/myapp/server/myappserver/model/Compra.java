@@ -34,15 +34,15 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name="cliente_id")
     private Cliente cliente;
-
-    @OneToMany (mappedBy="compra")
-    private List<ProductoCom> comprados;
-
     private String fecha;
-	private int total;	
+	private int total;
+    @OneToMany (mappedBy="compra")
+    private List<ProductoCom> productos;
+
+    	
 
     //Constructor 
-    public Compra(Date fecha, int total, Cliente cliente )
+    public Compra(String fecha, int total, Cliente cliente )
     {
         this.fecha = fecha;
         this.total = total;
@@ -73,7 +73,7 @@ public class Compra {
         return this.comprados;
     }
 
-    public Date getFecha()
+    public String getFecha()
     {
         return this.fecha;
     }
@@ -87,7 +87,7 @@ public class Compra {
     {
         return this.cliente;
     }
-    public void setFecha(Date fecha)
+    public void setFecha(String fecha)
     {
         this.fecha = fecha;
     }

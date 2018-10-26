@@ -30,35 +30,26 @@ public class ProductoCom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private int cantidad;
-
     @Column(unique=true)
     private String codigoSKU;
-
+    private String nombre;
+    private int precio;
+    private int undMed;
+    private int cantidad;
     @ManyToOne
     @JoinColumn(name="compra_id")
     private Compra compra;
 
-    private String nombre;
-    private int precio;
-    private int undMed;
-    private Date fechaAdquisicion;
-    private Date fechaVencimiento;
-
     //Constructor 
 
     public ProductoCom ( int cantidad, String codigoSKU, String nombre, 
-                        int precio, int undMed, Date fechaAdquisicion,
-                         Date fechaVencimiento, Compra compra)
+                        int precio, int undMed, Compra compra)
     {
         this.cantidad = cantidad;
         this.codigoSKU = codigoSKU;
         this.nombre = nombre;
         this.precio = precio;
         this.undMed = undMed;
-        this.fechaAdquisicion = fechaAdquisicion;
-        this.fechaVencimiento = fechaVencimiento;
         this.compra = compra;
     }
 
@@ -104,16 +95,6 @@ public class ProductoCom {
           return this.undMed;
       }
   
-      public Date getFechaAdquisicion()
-      {
-          return this.fechaAdquisicion;
-      }
-
-      public Date getFechaVencimiento()
-      {
-          return this.fechaVencimiento;
-      }
-
       public void setCompra (Compra compra)
       {
           this.compra = compra;
@@ -144,21 +125,11 @@ public class ProductoCom {
           this.undMed = undMed;
       }
   
-      public void setFechaAdquisicion(Date fechaAdquisicion) {
-          this.fechaAdquisicion = fechaAdquisicion;
-      }
-
-      
-      public void setFechaVencimiento(Date fechaVencimiento) {
-          this.fechaVencimiento = fechaVencimiento;
-      }
       @Override 
       public String toString()
       {
-          Date fechaVencimiento2 = fechaVencimiento;
         return "Producto [cantidad: " + cantidad + ", codigoSKU: " + codigoSKU + ", nombre: " + nombre + ", precio: "
-                + precio + ", undMed: " + undMed + ", fechaAdquisicion: " + fechaAdquisicion + ",fechaVencimiento: "
-                + fechaVencimiento2 + " ]";
+                + precio + ", undMed: " + undMed + ", fechaAdquisicion: " + " ]";
       }
 }
 
