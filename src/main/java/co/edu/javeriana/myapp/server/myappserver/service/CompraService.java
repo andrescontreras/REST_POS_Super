@@ -3,6 +3,7 @@ package co.edu.javeriana.myapp.server.myappserver.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,13 +40,13 @@ public class CompraService
 
 
     @PostMapping("/compra")
-    Compra crearProductoInv (Compra compra)
+    Compra crearProductoInv (@RequestBody Compra compra)
     {
         return compraRepository.save(compra);
     }
 
     @PutMapping("/compra")
-    Compra updateProductoInv (Compra compra)
+    Compra updateProductoInv (@RequestBody Compra compra)
     {
         return compraRepository.save(compra);
     }
