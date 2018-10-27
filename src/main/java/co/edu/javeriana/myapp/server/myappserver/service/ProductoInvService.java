@@ -83,7 +83,7 @@ public class ProductoInvService
 
     @PutMapping("/producto")
     ProductoInv updateProductoInv (@RequestBody ProductoInv producto)
-    {
+    {      
         return productoInvRepository.save(producto);
     }
 
