@@ -45,12 +45,12 @@ public class ProductoCom {
 
     private String nombre;
     private int precio;
-    private int undMed;
+    private String undMed;
 
     //Constructor 
 
     public ProductoCom ( int cantidad, String codigoSKU, String nombre, 
-                        int precio, int undMed,  Compra compra)
+                        int precio, String undMed,  Compra compra)
     {
         this.cantidad = cantidad;
         this.codigoSKU = codigoSKU;
@@ -97,7 +97,7 @@ public class ProductoCom {
           return this.precio;
       }
   
-      public int getUndMed()
+      public String getUndMed()
       {
           return this.undMed;
       }
@@ -127,7 +127,7 @@ public class ProductoCom {
           this.precio = precio;
       }
   
-      public void setUndMed (int undMed)
+      public void setUndMed (String undMed)
       {
           this.undMed = undMed;
       }

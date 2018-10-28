@@ -32,10 +32,10 @@ public class UsuarioService
         return usuarioRepository.findById(id);
     }
 
-    @RequestMapping("/usuario/u/{usuario}")
-    Optional<Usuario> findByCodigoSKU(@PathVariable("usuario") String usuario)
+    @RequestMapping("/usuario/u/{username}")
+    Usuario findByCodigoSKU(@PathVariable("username") String username)
     {
-        return usuarioRepository.findByUsuario(usuario);
+        return usuarioRepository.findByUsuario(username);
     }
 
     @DeleteMapping("/usuario/{id}")

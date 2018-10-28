@@ -76,21 +76,21 @@ public class MyappServerApplication implements CommandLineRunner {
 		clienteRepository.save(cliente);
 		compra = new Compra("17-07-2018", 1200, cliente);
 		compraRepository.save(compra);
-		productoC = new ProductoCom(2,"fd35","Uva",6400,4,compra);
+		productoC = new ProductoCom(2,"fd35","Uva",6400,"4",compra);
 		productoComRepository.save(productoC);
-		productoC = new ProductoCom(3,"fd36","Granadilla",3800,4,compra);
+		productoC = new ProductoCom(3,"fd36","Granadilla",3800,"4",compra);
 		productoComRepository.save(productoC);
 		//---------------------------------------------------------------
 		compra = new Compra("19-07-2018", 3200,cliente);
 		compraRepository.save(compra);
-		productoC = new ProductoCom(2,"fd34","Manzana",3200,4,compra);
+		productoC = new ProductoCom(2,"fd34","Manzana",3200,"4",compra);
 		productoComRepository.save(productoC);
 		productoC = new ProductoCom(1,"fd35","Uva",3200,4,compra);
 		productoComRepository.save(productoC);
 		//---------------------------------------------------------------
 		compra = new Compra("25-07-2018", 5300,cliente);
 		compraRepository.save(compra);
-		productoC = new ProductoCom(2,"fd37","Pitalla",5000,4,compra);
+		productoC = new ProductoCom(2,"fd37","Pitalla",5000,"4",compra);
 		productoComRepository.save(productoC);
 		
 

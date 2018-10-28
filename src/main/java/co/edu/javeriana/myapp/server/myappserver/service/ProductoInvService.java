@@ -1,6 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,19 +25,21 @@ public class ProductoInvService
     @Autowired
     private ProductoInvRepository productoInvRepository;
 
+    @PreAuthorize("hasRole('ROLE_CAJERO') or hasRole('ROLE_BODEGUERO')")
     @RequestMapping("/producto")
     Iterable<ProductoInv> findAll()
     {
         return productoInvRepository.findAll();
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_CAJERO') or hasRole('ROLE_BODEGUERO')")
     @RequestMapping("/producto/{id}")
     Optional<ProductoInv> findById(@PathVariable("id") Long id)
     {
         return productoInvRepository.findById(id);
     }
 
-    
+    @PreAuthorize("hasRole('ROLE_CAJERO') or hasRole('ROLE_BODEGUERO')")
     @RequestMapping(value = "/producto/c/{codigoSKU}")
     ProductoInv findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
@@ -49,7 +52,8 @@ public class ProductoInvService
             return p;
         }
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_CAJERO') or hasRole('ROLE_BODEGUERO')")
     @RequestMapping(value = "/producto/n/{nombre}")
     ProductoInv findByNombre(@PathVariable("nombre") String nombre)
     {
@@ -65,32 +69,37 @@ public class ProductoInvService
             return p;
         }
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_BODEGUERO')")
     @DeleteMapping("/producto/{id}")
     void deleteById(@PathVariable("id") Long id)
     {
         productoInvRepository.deleteById(id);
     }
     
+    @PreAuthorize("hasRole('ROLE_BODEGUERO')")
     @DeleteMapping("/producto/c/{codigoSKU}")
     void deleteByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         productoInvRepository.deleteByCodigoSKU(codigoSKU);
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_BODEGUERO')")
     @DeleteMapping("/producto/n/{nombre}")
     void deleteByNombre(@PathVariable("nombre") String nombre)
     {
         productoInvRepository.deleteByNombre(nombre);
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_BODEGUERO')")
     @PostMapping("/producto")
     ProductoInv crearProductoInv (@RequestBody ProductoInv producto)
     {
     	System.out.println("En crear, nombre de producto "+producto.getNombre());
         return productoInvRepository.save(producto);
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_BODEGUERO')")
     @PutMapping("/producto")
     ProductoInv updateProductoInv (@RequestBody ProductoInv producto)
     {      

@@ -1,6 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,28 +29,34 @@ public class CompraService
 
     @Autowired
     private ProductoInvRepository inventarioRepository;
+    
+    
 
     @Autowired
     private ProductoComRepository productoComRepository;
-    @RequestMapping("/compra")
+
+    @PreAuthorize("hasRole('ROLE_CAJERO')")
+    @RequestMapping(value = "/compra", produces="application/json")
     Iterable<Compra> findAll()
     {
         return compraRepository.findAll();
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_CAJERO')")
     @RequestMapping("/compra/{id}")
     Optional<Compra> findById(@PathVariable("id") Long id)
     {
         return compraRepository.findById(id);
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_CAJERO')")
     @DeleteMapping("/compra/{id}")
     void deleteById(@PathVariable("id") Long id)
     {
         compraRepository.deleteById(id);
     }
 
-
+    @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PostMapping("/compra")
     Compra crearCompra (@RequestBody Compra compra)
     {
@@ -74,7 +81,8 @@ public class CompraService
         return compra;
         
     }
-
+    
+    @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PutMapping("/compra")
     Compra updateCompra (@RequestBody Compra compra)
     {
