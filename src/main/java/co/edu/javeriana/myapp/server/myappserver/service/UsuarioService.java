@@ -32,10 +32,10 @@ public class UsuarioService
         return usuarioRepository.findById(id);
     }
 
-    @RequestMapping("/usuario/u/{username}")
-    Optional<Usuario> findByCodigoSKU(@PathVariable("username") String username)
+    @RequestMapping("/usuario/u/{usuario}")
+    Optional<Usuario> findByCodigoSKU(@PathVariable("usuario") String usuario)
     {
-        return usuarioRepository.findByUsuario(username);
+        return usuarioRepository.findByUsuario(usuario);
     }
 
     @DeleteMapping("/usuario/{id}")
@@ -44,20 +44,20 @@ public class UsuarioService
         usuarioRepository.deleteById(id);
     }
 
-    @DeleteMapping("/usuario/u/{username}")
-    void deleteBySKU(@PathVariable("username") String username)
+    @DeleteMapping("/usuario/u/{usuario}")
+    void deleteBySKU(@PathVariable("usuario") String usuario)
     {
-        usuarioRepository.deleteByUsuario(username);
+        usuarioRepository.deleteByUsuario(usuario);
     }
 
     @PostMapping("/usuario")
-    Usuario crearProductoInv (@RequestBody Usuario usuario)
+    Usuario crearUsuario (@RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }
 
     @PutMapping("/usuario")
-    Usuario updateProductoInv ( @RequestBody Usuario usuario)
+    Usuario updateUsuario ( @RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }

@@ -53,8 +53,10 @@ public class ProductoInvService
     @RequestMapping(value = "/producto/n/{nombre}")
     ProductoInv findByNombre(@PathVariable("nombre") String nombre)
     {
+        System.out.println(nombre);
         
         ProductoInv p = productoInvRepository.findByNombre(nombre);
+        System.out.println(p.getNombre() + " "+ p.getCantidad() + " " + p.getPrecio() );
         if (p.equals(null))
         {
             return null;
