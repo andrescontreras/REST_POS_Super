@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.javeriana.myapp.server.myappserver.model.Compra;
 import co.edu.javeriana.myapp.server.myappserver.model.CompraRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoCom;
+import co.edu.javeriana.myapp.server.myappserver.model.ProductoComRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInv;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInvRepository;
 
@@ -28,6 +29,8 @@ public class CompraService
     @Autowired
     private ProductoInvRepository inventarioRepository;
 
+    @Autowired
+    private ProductoComRepository productoComRepository;
     @RequestMapping("/compra")
     Iterable<Compra> findAll()
     {
@@ -48,11 +51,15 @@ public class CompraService
 
 
     @PostMapping("/compra")
-    Compra crearProductoInv (@RequestBody Compra compra)
+    Compra crearCompra (@RequestBody Compra compra)
     {
+        System.out.print(compra.getComprados());
         List<ProductoCom> comprados = compra.getComprados();
         int descontar;
         int inventario;
+        System.out.println(comprados.size());
+        compra = compraRepository.save(compra);
+
         for (ProductoCom c : comprados)
         {
             descontar = c.getCantidad();
@@ -60,13 +67,16 @@ public class CompraService
             inventario = i.getCantidad();
             inventario = inventario - descontar;
             i.setCantidad(inventario);
+            c.setCompra(compra);
+            productoComRepository.save(c);
         }
 
-        return compraRepository.save(compra);
+        return compra;
+        
     }
 
     @PutMapping("/compra")
-    Compra updateProductoInv (@RequestBody Compra compra)
+    Compra updateCompra (@RequestBody Compra compra)
     {
         return compraRepository.save(compra);
     }

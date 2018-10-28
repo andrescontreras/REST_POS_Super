@@ -70,13 +70,13 @@ public class ClienteService
     }
 
     @PostMapping("/cliente")
-    Cliente crearProductoInv (@RequestBody Cliente cliente)
+    Cliente crearCliente (@RequestBody Cliente cliente)
     {
         return clienteRepository.save(cliente);
     }
 
     @PutMapping("/cliente")
-    Cliente updateProductoInv (@RequestBody Cliente cliente)
+    Cliente updateCliente (@RequestBody Cliente cliente)
     {
         return clienteRepository.save(cliente);
     }

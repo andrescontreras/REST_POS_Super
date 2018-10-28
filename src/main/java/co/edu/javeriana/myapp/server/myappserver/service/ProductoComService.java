@@ -21,7 +21,7 @@ public class ProductoComService
     @Autowired
     private ProductoComRepository productoComRepository;
 
-    @RequestMapping("/productoInv")
+    @RequestMapping("/productoCom")
     Iterable<ProductoCom> findAll()
     {
         return productoComRepository.findAll();
@@ -34,7 +34,7 @@ public class ProductoComService
     }
 
     @RequestMapping("/productoCom/c/{codigoSKU}")
-        ProductoCom findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
+    ProductoCom findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
         ProductoCom p = productoComRepository.findByCodigoSKU(codigoSKU);
         if (p.equals(null))
@@ -47,7 +47,7 @@ public class ProductoComService
     }
 
     @RequestMapping("/productoCom/n/{nombre}")
-    ProductoCom findByName(@PathVariable("nombre") String nombre)
+    ProductoCom findByNombre(@PathVariable("nombre") String nombre)
     {
         ProductoCom p = productoComRepository.findByNombre(nombre);
         if (p.equals(null))
