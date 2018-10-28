@@ -21,21 +21,17 @@ public class ProductoInv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
     private int cantidad;
-
     @Column(unique=true)
     private String codigoSKU;
-    
     private String nombre;
     private int precio;
-    private int undMed;
+    private String undMed;
 
 
     //Constructor
 
-    public ProductoInv ( int cantidad, String codigoSKU, String nombre, int precio, int undMed)
+    public ProductoInv ( int cantidad, String codigoSKU, String nombre, int precio, String undMed)
     {
         this.cantidad = cantidad;
         this.codigoSKU = codigoSKU;
@@ -76,7 +72,7 @@ public class ProductoInv {
         return this.precio;
     }
 
-    public int getUndMed()
+    public String getUndMed()
     {
         return this.undMed;
     }
@@ -101,7 +97,7 @@ public class ProductoInv {
         this.precio = precio;
     }
 
-    public void setUndMed (int undMed)
+    public void setUndMed (String undMed)
     {
         this.undMed = undMed;
     }

@@ -53,17 +53,17 @@ public class MyappServerApplication implements CommandLineRunner {
 		Cliente cliente;
 		Usuario usuario;
 
-		productoI = new ProductoInv(30,"fd33","Pera", 1500, 4);
+		productoI = new ProductoInv(30,"fd33","Pera", 1500, "4");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd34","Manzana", 1600, 4);
+		productoI = new ProductoInv(30,"fd34","Manzana", 1600, "4");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(25,"fd35","Uvas", 3200, 4);
+		productoI = new ProductoInv(25,"fd35","Uvas", 3200, "4");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd36","Granadilla", 1900, 4);
+		productoI = new ProductoInv(30,"fd36","Granadilla", 1900, "4");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(28,"fd37","Pitalla", 2500, 4);
+		productoI = new ProductoInv(28,"fd37","Pitalla", 2500, "4");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd38","Naranja", 1200, 4);
+		productoI = new ProductoInv(30,"fd38","Naranja", 1200, "4");
 		productoInvRepository.save(productoI);
 
 		cliente = new Cliente(4361879, "Andres");
