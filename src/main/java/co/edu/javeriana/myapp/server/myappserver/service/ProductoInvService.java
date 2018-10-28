@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +40,14 @@ public class ProductoInvService
     @RequestMapping(value = "/producto/c/{codigoSKU}")
     ProductoInv findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
-        return productoInvRepository.findByCodigoSKU(codigoSKU);
+        ProductoInv p = productoInvRepository.findByCodigoSKU(codigoSKU);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
 
     @RequestMapping(value = "/producto/n/{nombre}")
@@ -76,14 +84,21 @@ public class ProductoInvService
 
     @PutMapping("/producto")
     ProductoInv updateProductoInv (@RequestBody ProductoInv producto)
+<<<<<<< HEAD
     {
+=======
+    {      
+>>>>>>> d1f36f10b91d6a1c51c09ddb58379ef5c01924c2
         return productoInvRepository.save(producto);
     }
 
-    @RequestMapping(value="/productos")
+    @RequestMapping(value="/productos", method = RequestMethod.GET)
     @ResponseBody
-    Optional<ProductoInv> FilterByPrecio(@RequestParam("v1") int v1,@RequestParam("v2") int v2)
+    ProductoInv FilterByPrecio(@RequestParam(value="v1", required=true) int v1 ,@RequestParam(value="v2",required=true) int v2)
     {
+        System.out.println("Llegaaaaaaaaaaaaaaaaaaaa");
+        System.out.println(v1+"  "+v2);
+        
         return productoInvRepository.FilterByPrecio(v1, v2);
     }
 }

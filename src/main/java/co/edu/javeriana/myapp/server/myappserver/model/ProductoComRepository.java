@@ -11,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ProductoComRepository extends CrudRepository<ProductoCom, Long>{
     
     @Transactional
-    @Query(value="SELECT * FROM ProductoCom p WHERE p.codigoSKU = :codigo", nativeQuery = true)
-    Optional<ProductoCom> findByCodigoSKU(@Param("codigo") String codigoSKU);
+    ProductoCom findByCodigoSKU( String codigoSKU);
 
+    @Transactional
+    ProductoCom findByNombre( String nombre);
     @Transactional
     @Modifying
     @Query(value="DELETE FROM ProductoCom WHERE ProductoCom.codigoSKU = :codigo", nativeQuery = true)

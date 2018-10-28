@@ -27,8 +27,8 @@ public interface ProductoInvRepository extends CrudRepository<ProductoInv, Long>
     @Transactional
     void deleteByNombre (String nombre);
 
-
+    
     @Transactional
-    @Query(value="SELECT p FROM ProductoInv p WHERE p.precio > :v1 and p.precio < :v2", nativeQuery=true)
-    Optional<ProductoInv> FilterByPrecio(@Param("v1") int v1,@Param("v2") int v2);
+    @Query(value="SELECT p FROM productoInv p WHERE p.precio > :v1 and p.precio < :v2", nativeQuery=true)
+    ProductoInv FilterByPrecio(@Param("v1") int v1,@Param("v2") int v2);
 }

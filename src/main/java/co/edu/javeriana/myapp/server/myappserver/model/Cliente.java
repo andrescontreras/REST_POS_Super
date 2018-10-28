@@ -19,6 +19,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 // Ver http://www.baeldung.com/role-and-privilege-for-spring-security-registration
 @Entity
 @Table(name = "Cliente")
@@ -30,6 +33,7 @@ public class Cliente {
     
 
     @OneToMany(mappedBy="cliente")
+    @JsonManagedReference
     private List<Compra> compras; 
 
     @Column(name = "identificacion", unique=true, nullable = false)

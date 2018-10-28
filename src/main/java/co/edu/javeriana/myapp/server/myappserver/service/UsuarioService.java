@@ -3,6 +3,7 @@ package co.edu.javeriana.myapp.server.myappserver.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class UsuarioService
         return usuarioRepository.findById(id);
     }
 
-    @RequestMapping("/usuario/{username}")
+    @RequestMapping("/usuario/u/{username}")
     Optional<Usuario> findByCodigoSKU(@PathVariable("username") String username)
     {
         return usuarioRepository.findByUsuario(username);
@@ -43,20 +44,20 @@ public class UsuarioService
         usuarioRepository.deleteById(id);
     }
 
-    @DeleteMapping("/usuario/{username}")
+    @DeleteMapping("/usuario/u/{username}")
     void deleteBySKU(@PathVariable("username") String username)
     {
         usuarioRepository.deleteByUsuario(username);
     }
 
     @PostMapping("/usuario")
-    Usuario crearProductoInv (Usuario usuario)
+    Usuario crearProductoInv (@RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }
 
     @PutMapping("/usuario")
-    Usuario updateProductoInv (Usuario usuario)
+    Usuario updateProductoInv ( @RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }

@@ -17,6 +17,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,9 +36,11 @@ public class Compra {
 
     @ManyToOne
     @JoinColumn(name="cliente_id")
+    @JsonBackReference
     private Cliente cliente;
 
     @OneToMany (mappedBy="compra")
+    @JsonManagedReference
     private List<ProductoCom> comprados;
 
     private String fecha;
