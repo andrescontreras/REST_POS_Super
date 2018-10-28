@@ -17,7 +17,6 @@ public interface ProductoComRepository extends CrudRepository<ProductoCom, Long>
     ProductoCom findByNombre( String nombre);
     @Transactional
     @Modifying
-    @Query(value="DELETE FROM ProductoCom WHERE ProductoCom.codigoSKU = :codigo", nativeQuery = true)
     void deleteByCodigoSKU (@Param("codigo") String codigoSKU);
 
 }

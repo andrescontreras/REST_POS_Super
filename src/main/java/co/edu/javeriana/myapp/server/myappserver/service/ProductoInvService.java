@@ -58,7 +58,16 @@ public class ProductoInvService
     ProductoInv findByNombre(@PathVariable("nombre") String nombre)
     {
         System.out.println(nombre);
-        return productoInvRepository.findByNombre(nombre);
+        
+        ProductoInv p = productoInvRepository.findByNombre(nombre);
+        System.out.println(p.getNombre() + " "+ p.getCantidad() + " " + p.getPrecio() );
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
     
     @PreAuthorize("hasRole('ROLE_BODEGUERO')")

@@ -38,16 +38,30 @@ public class ProductoComService
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @RequestMapping("/productoCom/c/{codigoSKU}")
-        ProductoCom findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
+    ProductoCom findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
-        return productoComRepository.findByCodigoSKU(codigoSKU);
+        ProductoCom p = productoComRepository.findByCodigoSKU(codigoSKU);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @RequestMapping("/productoCom/n/{nombre}")
-    ProductoCom findByName(@PathVariable("nombre") String nombre)
+    ProductoCom findByNombre(@PathVariable("nombre") String nombre)
     {
-        return productoComRepository.findByNombre(nombre);
+        ProductoCom p = productoComRepository.findByNombre(nombre);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")

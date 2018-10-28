@@ -44,10 +44,10 @@ public class UsuarioService
         usuarioRepository.deleteById(id);
     }
 
-    @DeleteMapping("/usuario/u/{username}")
-    void deleteBySKU(@PathVariable("username") String username)
+    @DeleteMapping("/usuario/u/{usuario}")
+    void deleteBySKU(@PathVariable("usuario") String usuario)
     {
-        usuarioRepository.deleteByUsuario(username);
+        usuarioRepository.deleteByUsuario(usuario);
     }
 
     @PostMapping("/usuario")

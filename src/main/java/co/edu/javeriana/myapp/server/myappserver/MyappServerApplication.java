@@ -1,11 +1,14 @@
 package co.edu.javeriana.myapp.server.myappserver;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration;
 
+import antlr.collections.List;
 import co.edu.javeriana.myapp.server.myappserver.model.Cliente;
 import co.edu.javeriana.myapp.server.myappserver.model.ClienteRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.Compra;
@@ -53,6 +56,8 @@ public class MyappServerApplication implements CommandLineRunner {
 		ProductoCom productoC;
 		Cliente cliente;
 		Usuario usuario;
+		
+		ArrayList<ProductoCom> comprados = new ArrayList<ProductoCom>();
 
 		productoI = new ProductoInv(30,"fd33","Pera", 1500, "4");
 		productoInvRepository.save(productoI);
@@ -69,7 +74,7 @@ public class MyappServerApplication implements CommandLineRunner {
 
 		cliente = new Cliente(4361879, "Andres");
 		clienteRepository.save(cliente);
-		compra = new Compra("17-07-2018", 1200,cliente);
+		compra = new Compra("17-07-2018", 1200, cliente);
 		compraRepository.save(compra);
 		productoC = new ProductoCom(2,"fd35","Uva",6400,"4",compra);
 		productoComRepository.save(productoC);

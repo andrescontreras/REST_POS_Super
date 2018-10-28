@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.javeriana.myapp.server.myappserver.model.Compra;
 import co.edu.javeriana.myapp.server.myappserver.model.CompraRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoCom;
+import co.edu.javeriana.myapp.server.myappserver.model.ProductoComRepository;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInv;
 import co.edu.javeriana.myapp.server.myappserver.model.ProductoInvRepository;
 
@@ -29,6 +30,11 @@ public class CompraService
     @Autowired
     private ProductoInvRepository inventarioRepository;
     
+    
+
+    @Autowired
+    private ProductoComRepository productoComRepository;
+
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @RequestMapping(value = "/compra", produces="application/json")
     Iterable<Compra> findAll()
@@ -52,11 +58,15 @@ public class CompraService
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PostMapping("/compra")
-    Compra crearProductoInv (@RequestBody Compra compra)
+    Compra crearCompra (@RequestBody Compra compra)
     {
+        System.out.print(compra.getComprados());
         List<ProductoCom> comprados = compra.getComprados();
         int descontar;
         int inventario;
+        System.out.println(comprados.size());
+        compra = compraRepository.save(compra);
+
         for (ProductoCom c : comprados)
         {
             descontar = c.getCantidad();
@@ -64,14 +74,17 @@ public class CompraService
             inventario = i.getCantidad();
             inventario = inventario - descontar;
             i.setCantidad(inventario);
+            c.setCompra(compra);
+            productoComRepository.save(c);
         }
 
-        return compraRepository.save(compra);
+        return compra;
+        
     }
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PutMapping("/compra")
-    Compra updateProductoInv (@RequestBody Compra compra)
+    Compra updateCompra (@RequestBody Compra compra)
     {
         return compraRepository.save(compra);
     }

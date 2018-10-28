@@ -46,7 +46,14 @@ public class ClienteService
     @RequestMapping("/cliente/n/{nombre}")
     Cliente findByNombre(@PathVariable("nombre") String nombre)
     {
-        return clienteRepository.findByNombre(nombre);
+        Cliente c = clienteRepository.findByNombre(nombre);
+        if (c.equals(null))
+        {
+            return null;
+        }
+        else{
+            return c;
+        }
     }
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
@@ -58,28 +65,28 @@ public class ClienteService
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @DeleteMapping("/cliente/i/{identificacion}")
-    void deleteBySKU(@PathVariable("identificacion") int identificacion)
+    void deleteByIdentificacion(@PathVariable("identificacion") int identificacion)
     {
         clienteRepository.deleteByIdentificacion(identificacion);
     }
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @DeleteMapping("/cliente/n/{nombre}")
-    void deleteByName(@PathVariable("nombre") String nombre)
+    void deleteByNombre(@PathVariable("nombre") String nombre)
     {
-        clienteRepository.deleteByName(nombre);
+        clienteRepository.deleteByNombre(nombre);
     }
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PostMapping("/cliente")
-    Cliente crearProductoInv (@RequestBody Cliente cliente)
+    Cliente crearCliente (@RequestBody Cliente cliente)
     {
         return clienteRepository.save(cliente);
     }
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")
     @PutMapping("/cliente")
-    Cliente updateProductoInv (@RequestBody Cliente cliente)
+    Cliente updateCliente (@RequestBody Cliente cliente)
     {
         return clienteRepository.save(cliente);
     }

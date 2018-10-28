@@ -52,7 +52,15 @@ public class Compra {
         this.fecha = fecha;
         this.total = total;
         this.cliente = cliente;
-        comprados = new ArrayList<ProductoCom>();
+        this.comprados = new ArrayList<>();
+    }
+
+    public Compra(String fecha, int total,  Cliente cliente, ArrayList<ProductoCom> comprados )
+    {
+        this.fecha = fecha;
+        this.total = total;
+        this.cliente = cliente;
+        this.comprados = comprados;
     }
 
     public Compra ()
