@@ -84,11 +84,7 @@ public class ProductoInvService
 
     @PutMapping("/producto")
     ProductoInv updateProductoInv (@RequestBody ProductoInv producto)
-<<<<<<< HEAD
-    {
-=======
     {      
->>>>>>> d1f36f10b91d6a1c51c09ddb58379ef5c01924c2
         return productoInvRepository.save(producto);
     }
 
