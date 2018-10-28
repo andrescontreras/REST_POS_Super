@@ -85,6 +85,7 @@ public class ProductoInvService
     @PostMapping("/producto")
     ProductoInv crearProductoInv (@RequestBody ProductoInv producto)
     {
+    	System.out.println("En crear, nombre de producto "+producto.getNombre());
         return productoInvRepository.save(producto);
     }
 
