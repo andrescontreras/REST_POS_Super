@@ -39,6 +39,7 @@ public class CompraService
     @RequestMapping(value = "/compra", produces="application/json")
     Iterable<Compra> findAll()
     {
+        System.out.println("entro get dfghj-----------------------------");
         return compraRepository.findAll();
     }
     
@@ -56,7 +57,7 @@ public class CompraService
         compraRepository.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_CAJERO')")
+    //@PreAuthorize("hasRole('ROLE_CAJERO')")
     @PostMapping("/compra")
     Compra crearCompra (@RequestBody Compra compra)
     {
@@ -65,6 +66,7 @@ public class CompraService
         int descontar;
         int inventario;
         System.out.println(comprados.size());
+        System.out.println("---------------------------------------------------");
         compra = compraRepository.save(compra);
 
         for (ProductoCom c : comprados)
@@ -77,15 +79,24 @@ public class CompraService
             c.setCompra(compra);
             productoComRepository.save(c);
         }
-
+        System.out.println("---------------------------------------------------");
         return compra;
         
     }
     
-    @PreAuthorize("hasRole('ROLE_CAJERO')")
+    //@PreAuthorize("hasRole('ROLE_CAJERO')")
     @PutMapping("/compra")
     Compra updateCompra (@RequestBody Compra compra)
     {
-        return compraRepository.save(compra);
+        List<ProductoCom> comprados = compra.getComprados();
+        compra = compraRepository.save(compra);
+
+        for (ProductoCom c : comprados)
+        {
+            c.setCompra(compra);
+            productoComRepository.save(c);
+        }
+
+        return compra;
     }
 }
