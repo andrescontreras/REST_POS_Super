@@ -64,9 +64,9 @@ public class ClienteService
     }
 
     @DeleteMapping("/cliente/n/{nombre}")
-    void deleteByName(@PathVariable("nombre") String nombre)
+    void deleteByNombre(@PathVariable("nombre") String nombre)
     {
-        clienteRepository.deleteByName(nombre);
+        clienteRepository.deleteByNombre(nombre);
     }
 
     @PostMapping("/cliente")

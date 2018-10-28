@@ -25,6 +25,6 @@ public interface ClienteRepository extends CrudRepository<Cliente, Long>{
     @Modifying
     @Transactional
     //@Query(value="DELETE FROM Cliente WHERE Cliente.nombre = :nombre", nativeQuery = true)
-    void deleteByName (@Param("nombre") String nombre);
+    void deleteByNombre (@Param("nombre") String nombre);
     
 }
