@@ -36,7 +36,6 @@ public class ProductoCom {
     
     private int cantidad;
 
-    @Column(unique=true)
     private String codigoSKU;
 
     @ManyToOne
