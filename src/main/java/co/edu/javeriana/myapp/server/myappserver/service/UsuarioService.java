@@ -33,7 +33,7 @@ public class UsuarioService
     }
 
     @RequestMapping("/usuario/u/{username}")
-    Optional<Usuario> findByCodigoSKU(@PathVariable("username") String username)
+    Usuario findByCodigoSKU(@PathVariable("username") String username)
     {
         return usuarioRepository.findByUsuario(username);
     }
@@ -51,13 +51,13 @@ public class UsuarioService
     }
 
     @PostMapping("/usuario")
-    Usuario crearProductoInv (@RequestBody Usuario usuario)
+    Usuario crearUsuario (@RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }
 
     @PutMapping("/usuario")
-    Usuario updateProductoInv ( @RequestBody Usuario usuario)
+    Usuario updateUsuario ( @RequestBody Usuario usuario)
     {
         return usuarioRepository.save(usuario);
     }

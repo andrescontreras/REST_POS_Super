@@ -13,7 +13,7 @@ public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
     
     
     @Transactional
-    Optional<Usuario> findByUsuario(String usuario);
+    Usuario findByUsuario(String usuario); 
 
     @Transactional
     @Modifying

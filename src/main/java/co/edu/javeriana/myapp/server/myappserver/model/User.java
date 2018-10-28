@@ -5,10 +5,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 // Ver http://www.baeldung.com/role-and-privilege-for-spring-security-registration
+
 public class User implements UserDetails {
 	private static final long serialVersionUID = 1987040876334251017L;
 	private String username;
@@ -19,7 +22,7 @@ public class User implements UserDetails {
 	private boolean credentialsNonExpired;
 	private boolean enabled;
 	private List<GrantedAuthority> authorities = new ArrayList<>();
-
+	
 	public  User(String username, String password,String tipo, String... authorities) {
 		super();
 		this.username = username;
