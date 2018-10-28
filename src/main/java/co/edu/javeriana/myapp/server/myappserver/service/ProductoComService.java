@@ -36,13 +36,27 @@ public class ProductoComService
     @RequestMapping("/productoCom/c/{codigoSKU}")
         ProductoCom findByCodigoSKU(@PathVariable("codigoSKU") String codigoSKU)
     {
-        return productoComRepository.findByCodigoSKU(codigoSKU);
+        ProductoCom p = productoComRepository.findByCodigoSKU(codigoSKU);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
 
     @RequestMapping("/productoCom/n/{nombre}")
     ProductoCom findByName(@PathVariable("nombre") String nombre)
     {
-        return productoComRepository.findByNombre(nombre);
+        ProductoCom p = productoComRepository.findByNombre(nombre);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
     @DeleteMapping("/productoCom/{id}")
     void deleteById(@PathVariable("id") Long id)

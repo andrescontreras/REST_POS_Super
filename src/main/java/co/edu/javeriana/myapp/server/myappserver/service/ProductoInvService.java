@@ -53,8 +53,15 @@ public class ProductoInvService
     @RequestMapping(value = "/producto/n/{nombre}")
     ProductoInv findByNombre(@PathVariable("nombre") String nombre)
     {
-        System.out.println(nombre);
-        return productoInvRepository.findByNombre(nombre);
+        
+        ProductoInv p = productoInvRepository.findByNombre(nombre);
+        if (p.equals(null))
+        {
+            return null;
+        }
+        else{
+            return p;
+        }
     }
 
     @DeleteMapping("/producto/{id}")

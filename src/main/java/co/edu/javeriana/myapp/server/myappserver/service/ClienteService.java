@@ -41,7 +41,14 @@ public class ClienteService
     @RequestMapping("/cliente/n/{nombre}")
     Cliente findByNombre(@PathVariable("nombre") String nombre)
     {
-        return clienteRepository.findByNombre(nombre);
+        Cliente c = clienteRepository.findByNombre(nombre);
+        if (c.equals(null))
+        {
+            return null;
+        }
+        else{
+            return c;
+        }
     }
 
     @DeleteMapping("/cliente/{id}")
@@ -51,7 +58,7 @@ public class ClienteService
     }
     
     @DeleteMapping("/cliente/i/{identificacion}")
-    void deleteBySKU(@PathVariable("identificacion") int identificacion)
+    void deleteByIdentificacion(@PathVariable("identificacion") int identificacion)
     {
         clienteRepository.deleteByIdentificacion(identificacion);
     }
