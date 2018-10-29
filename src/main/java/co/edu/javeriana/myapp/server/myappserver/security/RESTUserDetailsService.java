@@ -23,7 +23,7 @@ public class RESTUserDetailsService implements UserDetailsService {
 		users.put("user", new User("user", "password", "USER","ROLE_BODEGUERO"));
 		users.put("admin", new User("admin", "password","ADMIN" ,"ROLE_BODEGUERO"));
 		users.put("cajero", new User("cajero", "password", "CAJERO","ROLE_CAJERO"));
-		users.put("bodeguero", new User("bodeguero", "password", "CAJERO","ROLE_BODEGUERO"));
+		users.put("bodeguero", new User("bodeguero", "password", "BODEGUERO","ROLE_BODEGUERO"));
 	}
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO En este método debería recuperarlse la info del usuario desde la base de datos

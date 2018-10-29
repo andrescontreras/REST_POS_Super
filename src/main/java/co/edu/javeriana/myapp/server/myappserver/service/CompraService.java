@@ -39,6 +39,7 @@ public class CompraService
     @RequestMapping(value = "/compra", produces="application/json")
     Iterable<Compra> findAll()
     {
+    	System.out.println("Estoy en findAll");
         return compraRepository.findAll();
     }
     
@@ -46,6 +47,7 @@ public class CompraService
     @RequestMapping("/compra/{id}")
     Optional<Compra> findById(@PathVariable("id") Long id)
     {
+    	System.out.println("Estoy en findById");
         return compraRepository.findById(id);
     }
     
@@ -53,23 +55,26 @@ public class CompraService
     @DeleteMapping("/compra/{id}")
     void deleteById(@PathVariable("id") Long id)
     {
+    	System.out.println("Estoy en deleteById");
         compraRepository.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_CAJERO')")
-    @PostMapping("/compra")
+    @PostMapping("/compra/crear")
     Compra crearCompra (@RequestBody Compra compra)
     {
+    	System.out.println("Estoy en crearCompra");
         System.out.print(compra.getComprados());
         List<ProductoCom> comprados = compra.getComprados();
         int descontar;
         int inventario;
-        System.out.println(comprados.size());
+        System.out.println("Tamano de comprados "+comprados.size());
         compra = compraRepository.save(compra);
 
         for (ProductoCom c : comprados)
         {
+        	System.out.println("Comprados " +c.getNombre());
             descontar = c.getCantidad();
+            System.out.println("Descontar " +descontar);
             ProductoInv i = inventarioRepository.findByCodigoSKU(c.getCodigoSKU());
             inventario = i.getCantidad();
             inventario = inventario - descontar;
