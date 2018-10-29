@@ -3,6 +3,7 @@ package co.edu.javeriana.myapp.server.myappserver.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,7 @@ public class CompraService
     private ProductoComRepository productoComRepository;
 
     @PreAuthorize("hasRole('ROLE_CAJERO')")
-    @RequestMapping(value = "/compra", produces="application/json")
+    @GetMapping(value = "/compra", produces="application/json")
     Iterable<Compra> findAll()
     {
     	System.out.println("Estoy en findAll");
@@ -44,7 +45,7 @@ public class CompraService
     }
     
     @PreAuthorize("hasRole('ROLE_CAJERO')")
-    @RequestMapping("/compra/{id}")
+    @GetMapping("/compra/{id}")
     Optional<Compra> findById(@PathVariable("id") Long id)
     {
     	System.out.println("Estoy en findById");
@@ -59,7 +60,7 @@ public class CompraService
         compraRepository.deleteById(id);
     }
 
-    @PostMapping("/compra/crear")
+    @PostMapping("/compra")
     Compra crearCompra (@RequestBody Compra compra)
     {
     	System.out.println("Estoy en crearCompra");
