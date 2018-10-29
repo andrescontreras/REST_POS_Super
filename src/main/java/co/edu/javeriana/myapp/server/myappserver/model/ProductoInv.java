@@ -21,8 +21,7 @@ public class ProductoInv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int cantidad;
-    @Column(unique=true)
+    private int cantidad;   
     private String codigoSKU;
     private String nombre;
     private int precio;

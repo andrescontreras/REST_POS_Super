@@ -68,6 +68,8 @@ public class CompraService
         int descontar;
         int inventario;
         System.out.println("Tamano de comprados "+comprados.size());
+        System.out.println(comprados.size());
+        System.out.println("---------------------------------------------------");
         compra = compraRepository.save(compra);
 
         for (ProductoCom c : comprados)
@@ -82,15 +84,24 @@ public class CompraService
             c.setCompra(compra);
             productoComRepository.save(c);
         }
-
+        System.out.println("---------------------------------------------------");
         return compra;
         
     }
     
-    @PreAuthorize("hasRole('ROLE_CAJERO')")
+    //@PreAuthorize("hasRole('ROLE_CAJERO')")
     @PutMapping("/compra")
     Compra updateCompra (@RequestBody Compra compra)
     {
-        return compraRepository.save(compra);
+        List<ProductoCom> comprados = compra.getComprados();
+        compra = compraRepository.save(compra);
+
+        for (ProductoCom c : comprados)
+        {
+            c.setCompra(compra);
+            productoComRepository.save(c);
+        }
+
+        return compra;
     }
 }
