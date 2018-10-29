@@ -59,17 +59,29 @@ public class MyappServerApplication implements CommandLineRunner {
 		
 		ArrayList<ProductoCom> comprados = new ArrayList<ProductoCom>();
 
-		productoI = new ProductoInv(30,"fd33","Pera", 1500, "4");
+		productoI = new ProductoInv(300,"fd33","Pera", 1500, "lb");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd34","Manzana", 1600, "4");
+		productoI = new ProductoInv(300,"fd34","Manzana", 1600, "lb");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(25,"fd35","Uvas", 3200, "4");
+		productoI = new ProductoInv(250,"fd35","Uvas", 3200, "lb");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd36","Granadilla", 1900, "4");
+		productoI = new ProductoInv(300,"fd36","Granadilla", 1900, "lb");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(28,"fd37","Pitalla", 2500, "4");
+		productoI = new ProductoInv(280,"fd37","Pitalla", 2500, "lb");
 		productoInvRepository.save(productoI);
-		productoI = new ProductoInv(30,"fd38","Naranja", 1200, "4");
+		productoI = new ProductoInv(300,"fd38","Naranja", 1200, "lb");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(70,"fd39","Sombrilla", 8650, "Und");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(8,"fd40","Audifonos LogitechG", 214000, "Und");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(15,"fd32","Olla a presion De la abuela", 32000, "Und");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(30,"fd31","Pastas Doria", 8000, "gr");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(70,"fd30","Todo rico natural", 1800, "4");
+		productoInvRepository.save(productoI);
+		productoI = new ProductoInv(70,"fd41","Todo rico bbq", 1800, "4");
 		productoInvRepository.save(productoI);
 
 		cliente = new Cliente(4361879, "Andres");
